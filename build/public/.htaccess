@@ -1,0 +1,17 @@
+#CUSTOM URL:
+Options +FollowSymLinks
+RewriteEngine On
+RewriteBase /
+
+#3 params re-write rule
+#RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)$ index.php?x=$1&y=$2&ldmsg=$3
+#RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/$ index.php?x=$1&y=$2&ldmsg=$3
+
+# Rewrite all paths to index except for existing files
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-d 
+RewriteCond %{REQUEST_FILENAME} !-l [OR]
+# RewriteCond %{REQUEST_URI} ^/assets/$ [OR]
+
+RewriteCond %{REQUEST_URI} ^/templates/$
+RewriteRule .* index.html [L]

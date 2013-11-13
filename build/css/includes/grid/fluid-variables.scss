@@ -1,0 +1,21 @@
+
+// Breakpoints
+$mediumBreak: 1000px; // included in medium size
+$smallBreak: 767px; // included in small size
+$maxGridWidth: 1200px;
+
+// Set column/gutter sizes and # of columns (for non-fluid grid)
+$colWidth: 44px;
+$gutterWidth: 40px;
+$numberOfCols: 12;
+
+// Set column/gutter sizes for fluid grid
+$gutterWidthFluid: 6%; // Column width is calculated from this value
+$gridMarginFluid: 2%; // The outside margin of the grid
+
+// Set margin for small size
+$gridMarginSmall: 10%;
+
+// Factors by which to scale text at different sizes
+$mediumMultiplier: .9;
+$smallMultiplier: .8;

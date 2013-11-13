@@ -1,0 +1,80 @@
+// Sticky footer from:
+// http://css-tricks.com/sticky-footer/
+#footer-composite {
+    position: relative;
+    background-color: #F3F3F3;
+    border-top: 1px solid #EAEAEA;
+    color: #aaa;
+    width: 100%;
+    height: $footerHeight - 1px;
+
+    .wrapper {
+        padding: 10px 0px;
+    }
+
+    a:link, a:visited {
+        color: #777;
+        text-decoration: none;
+    }
+
+    a:hover, a:active, a:focus {
+        color: $magenta;
+    }
+
+    .followUs {
+        color: #777;
+        cursor: pointer;
+        &:hover {
+            color: $magenta;
+        }
+    }
+
+    ul {
+        margin-bottom: 20px;
+        color: #ddd;
+        font-size: 10px;
+        text-align: center;
+    }
+
+    li {
+        display: inline;
+        border-right: 1px solid #CCC;
+        margin-right: 5px;
+        padding-right: 10px;
+
+        &.last-child {
+            border: none;
+            padding-right:0px;
+            margin-right:0px;
+        }
+
+        .socialBtn{
+            width:10px;
+            height: 10px;
+            background: #aaa;
+            position: relative;
+            display:none;
+            margin-right:1px;
+            overflow: hidden;
+            background-repeat: no-repeat;
+            top:1px;
+        }
+        .socialBtn:hover{
+            top:2px;
+            background-position: 0px -10px;
+        }
+
+        .facebook{
+            background:url("../images/icons/fb.png");
+        }
+        .twitter{
+            background:url("../images/icons/twitter.png");
+        }
+        .linkedin{
+            background:url("../images/icons/linkedin.png");
+        }
+        .youtube{
+            background:url("../images/icons/yt.png");
+        }
+    }
+}

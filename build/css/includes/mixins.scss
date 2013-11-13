@@ -1,0 +1,41 @@
+/* animations */
+//add escape property when passing into this mixin
+// .animate-default(e("width, color, blah"));
+
+@mixin animate-default($property:all, $time:500ms ){
+  -webkit-transition: $property $time cubic-bezier(0.385, 0.205, 0.235, 0.835);
+       -moz-transition: $property $time cubic-bezier(0.385, 0.205, 0.235, 0.835);
+        -ms-transition: $property $time cubic-bezier(0.385, 0.205, 0.235, 0.835);
+         -o-transition: $property $time cubic-bezier(0.385, 0.205, 0.235, 0.835);
+            transition: $property $time cubic-bezier(0.385, 0.205, 0.235, 0.835);
+}
+@mixin animate-height-width($time:500ms ){
+  -webkit-transition: height $time cubic-bezier(0.385, 0.205, 0.235, 0.835);
+       -moz-transition: height $time cubic-bezier(0.385, 0.205, 0.235, 0.835);
+        -ms-transition: height $time cubic-bezier(0.385, 0.205, 0.235, 0.835);
+         -o-transition: height $time cubic-bezier(0.385, 0.205, 0.235, 0.835);
+            transition: height $time cubic-bezier(0.385, 0.205, 0.235, 0.835);
+
+  -webkit-transition: width $time cubic-bezier(0.385, 0.205, 0.235, 0.835);
+       -moz-transition: width $time cubic-bezier(0.385, 0.205, 0.235, 0.835);
+        -ms-transition: width $time cubic-bezier(0.385, 0.205, 0.235, 0.835);
+         -o-transition: width $time cubic-bezier(0.385, 0.205, 0.235, 0.835);
+            transition: width $time cubic-bezier(0.385, 0.205, 0.235, 0.835);
+}
+
+@mixin colorize_bg($color: #FFFFFF, $alpha: 1) {
+    background: hsla(hue($color), saturation($color), lightness($color), $alpha);
+}
+
+@mixin animate{
+  @include animate-default(all, 250ms);
+}
+
+@mixin alpha($opacity:100){
+  
+  //decimal 0-1
+  opacity: $opacity / 100;
+  
+  //whole number 1-100
+  filter :alpha(opacity=$opacity);
+}

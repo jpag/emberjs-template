@@ -1,0 +1,15 @@
+
+.downloadApp{
+  background-image:url("../images/icons/Download_on_the_App_Store_Badge_US-UK_135x40.png");
+  background-image:url("../images/icons/Download_on_the_App_Store_Badge_US-UK_135x40.svg");
+  width:135px;
+  height:40px;
+  background-repeat: no-repeat;
+  overflow: none;
+  cursor: pointer;
+  display:block;
+}
+
+.ie .downloadApp{
+  background-image:url("../images/icons/Download_on_the_App_Store_Badge_US-UK_135x40.png");
+}

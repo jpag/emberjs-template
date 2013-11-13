@@ -1,0 +1,16 @@
+<div class="wrapper">
+    <div>
+        <ul>
+            {{#each links}}
+                <li><a href={{link}} target="_blank" >{{name}}</a></li>
+            {{/each}}
+
+            <li id="follow-us" class="last-child" >
+                <span class="followUs">Follow Us</span>
+                {{#each followBtns}}
+                    <a href="{{link}}" class="socialBtn {{classname}}" target="_blank"></a>
+                {{/each}}
+            </li>
+        </ul>
+    </div>
+</div>

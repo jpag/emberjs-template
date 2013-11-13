@@ -1,0 +1,21 @@
+.ie7 .scroll-wrapper .guide .line {
+  top: 5px;
+}
+.ie7 .scroll-wrapper .guide #icon-wrapper {
+  margin-top: 5px;
+}
+.ie7 #explore-view .downloadApp-wrapper {
+  margin-bottom: 45px;
+}
+.ie7 #explore-view .txt-wrapper {
+  height: 185px;
+}
+.ie7 #bottom-composite .caption .guide {
+  display: none;
+}
+.video-bkgd {
+  z-index: 100;
+}
+.video-mask {
+  display: none;
+}

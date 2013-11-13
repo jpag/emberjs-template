@@ -1,0 +1,114 @@
+@font-face {
+	font-family: "FoundersGrotCond-Bold";
+	src: url("../fonts/FoundersGrotCond-Bold.eot?") format("embedded-opentype"),
+	     url("../fonts/FoundersGrotCond-Bold.woff") format("woff"),
+	     url("../fonts/FoundersGrotCond-Bold.svg") format("svg"),
+	     url("../fonts/FoundersGrotCond-Bold.ttf") format("opentype");
+	font-style: normal;
+	font-weight: 500;
+	font-stretch: normal;
+}
+
+@font-face {
+	font-family: "FoundersGrotCond-Semibold";
+	src: url("../fonts/FoundersGrotCond-Semibold.eot?") format("embedded-opentype"),
+	     url("../fonts/FoundersGrotCond-Semibold.woff") format("woff"),
+	     url("../fonts/FoundersGrotCond-Semibold.svg") format("svg"),
+	     url("../fonts/FoundersGrotCond-Semibold.ttf") format("opentype");
+	font-style: normal;
+	font-weight: 500;
+	font-stretch: normal;
+}
+
+@font-face {
+	font-family: "FoundersGrotCond-Medium";
+	src: url("../fonts/FoundersGrotCond-Medium.eot?") format("embedded-opentype"),
+	     url("../fonts/FoundersGrotCond-Medium.woff") format("woff"),
+	     url("../fonts/FoundersGrotCond-Medium.svg") format("svg"),
+	     url("../fonts/FoundersGrotCond-Medium.ttf") format("opentype");
+	font-style: normal;
+	font-weight: 500;
+	font-stretch: normal;
+}
+
+@font-face {
+	font-family: "FoundersGrotCond-Light";
+	src: url("../fonts/FoundersGrotCond-Light.eot?") format("embedded-opentype"),
+	     url("../fonts/FoundersGrotCond-Light.woff") format("woff"),
+	     url("../fonts/FoundersGrotCond-Light.svg") format("svg"),
+	     url("../fonts/FoundersGrotCond-Light.ttf") format("opentype");
+	font-style: normal;
+	font-weight: 500;
+	font-stretch: normal;
+}
+
+@font-face {
+	font-family: "FoundersGrotCond-Regular";
+	src: url("../fonts/FoundersGrotCond-Regular.eot?") format("embedded-opentype"),
+	     url("../fonts/FoundersGrotCond-Regular.woff") format("woff"),
+	     url("../fonts/FoundersGrotCond-Regular.svg") format("svg"),
+	     url("../fonts/FoundersGrotCond-Regular.ttf") format("opentype");
+	font-style: normal;
+	font-weight: 500;
+	font-stretch: normal;
+}
+
+@mixin founders( $size: 18px, $color : #333333 ){
+	font-family: "FoundersGrotCond-Semibold";
+	font-size: $size;
+	color: $color;
+	text-transform: uppercase;
+}
+
+.georgiafont{
+	font-family: Georgia, Serif;
+}
+
+h1, h2 {
+	color: #444444;
+	font-family: "FoundersGrotCond-Semibold", sans-serif;
+	text-transform: none;
+	font-style: normal;
+	font-weight: 500;
+	font-stretch: normal;
+}
+
+h1{
+	font-size: 40px;
+}
+
+h2 {
+	font-size: 32px;
+	margin-bottom: 5px;
+}
+
+h3 {
+	color: #cccccc;
+	font-size: 24px;
+	font-family: "FoundersGrotCond-Semibold", sans-serif;
+	text-transform: none;
+	font-style: normal;
+	font-weight: 500;
+	font-stretch: normal;
+}
+
+
+p {
+  color: #9f9f9f;
+  font-family: arial,sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  margin: auto;
+  position: relative;
+}
+
+.arialfont{
+	font-family: arial,sans-serif;
+}
+
+.blocked {
+	background: $magenta;
+	color: #fff;
+	padding: 10px;
+}
+

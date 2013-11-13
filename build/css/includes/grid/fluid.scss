@@ -1,0 +1,201 @@
+// We render this out in advance because otherwise it will slow down the compiler
+
+// GRID
+//----------------------------------------------------------//
+
+// Whether or not to use the fluid grid (THIS MUST BE SET TO EITHER TRUE OR FALSE)
+$useFluidGrid: true;
+
+@import 'fluid-variables';
+
+//----------------------------------------------------------//
+
+// CLEARFIX
+//----------------------------------------------------------//
+@mixin clearfix{
+	&:before, &:after{
+		content: "";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+	&{
+		zoom: 1;
+	}
+}
+
+.clearfix {
+	@include clearfix;
+}
+
+// GRID
+//----------------------------------------------------------//
+// define column and gutter widths (at "large" size)
+$colWidth: $colWidth;
+$gutterWidth: $gutterWidth;
+$numberOfCols: $numberOfCols;
+
+// overall width of grid (including gutters)
+$gridWidth: ($colWidth * $numberOfCols) + ($gutterWidth * $numberOfCols);
+
+// if using fluid grid, recalculate values
+@if $useFluidGrid == true {
+	$colWidth: (100% - ($numberOfCols * $gutterWidthFluid)) / $numberOfCols;
+	$gutterWidth: $gutterWidthFluid;
+	$gridWidth: 100% - 2 * $gridMarginFluid;
+}
+
+// breakpoints
+$mediumBreak: $mediumBreak;
+$smallBreak: $smallBreak;
+
+// multipliers
+$mediumMultiplier: $mediumMultiplier;
+$smallMultiplier: $smallMultiplier;
+
+// medium, .8 factor
+$colWidthMedium: 36px;
+$gutterWidthMedium: 27px;
+$gridWidthMedium: ($colWidthMedium * $numberOfCols) + ($gutterWidthMedium * $numberOfCols);
+@if $useFluidGrid == true {
+	$colWidthMedium:  (100% - ($numberOfCols * $gutterWidthFluid)) / $numberOfCols;
+	$gutterWidthMedium: $gutterWidthFluid;
+	$gridWidthMedium: 100% - 2 * $gridMarginFluid;
+}
+
+// defines a 100% width containing box (optional, useful for full-width backgrounds)
+.full-box {
+	@include clearfix;
+	width: 100%;
+	display: block;
+}
+
+// a container that holds (and optionally centers) one or more rows
+.container {
+	width: $gridWidth;
+	max-width: $maxGridWidth;
+	margin: 0 auto;
+
+	@media screen and (max-width: $mediumBreak) {
+		width: $gridWidthMedium;
+	}
+
+	@media screen and (max-width: $smallBreak) {
+		width: 100%;
+	}
+}
+
+// defines a row in which we place columns
+.row {
+	@include clearfix;
+
+	// nested columns
+	.col .row .col {
+
+		&:first-child {
+			margin-left: 0;
+		}
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		@media screen and (max-width: $smallBreak) {
+			margin-left: 0;
+			margin-right: 0;
+			width: 100%;
+		}
+	}
+}
+
+// all columns
+.col {
+	@include clearfix;
+	float: left;
+	margin: 0 ($gutterWidth / 2);
+	box-sizing: border-box;
+
+	@media screen and (max-width: $mediumBreak) {
+		margin: 0 ($gutterWidthMedium / 2);
+	}
+
+	@media screen and (max-width: $smallBreak) {
+		margin: 0 ($gridMarginSmall / 2);
+	}
+}
+
+// Column loop to define various widths
+@for $i from 1 through $numberOfCols {
+	.col.span-#{$i} {
+		width: ($colWidth * $i) + ($gutterWidth * ($i - 1));
+
+		@media screen and (max-width: $mediumBreak) {
+			width: ($colWidthMedium * $i) + ($gutterWidthMedium * ($i - 1));
+		}
+
+		@media screen and (max-width: $smallBreak) {
+			@if ( $i < 0 ) {
+				width: (100% - (2 * $gridMarginSmall)) / 2;
+			} @else {
+				width: 100% - $gridMarginSmall;
+			}
+		}
+	}
+}
+
+// Push columns
+@for $i from 1 through 12 {
+	.push-#{$i} {
+		margin-left: ($colWidth * $i) + ($gutterWidth / 2) + ($gutterWidth * $i);
+
+		@media screen and (max-width: $mediumBreak) {
+			margin-left: ($colWidthMedium * $i) + ($gutterWidthMedium / 2) + ($gutterWidthMedium * $i);
+		}
+
+		@media screen and (max-width: $smallBreak) {
+			margin-left: 5%;
+		}
+	}
+}
+
+// If a block is centered, its row should contain no other columns
+.centered {
+	margin: 0 auto;
+	float: none;
+
+	@media screen and (max-width: $mediumBreak) {
+		width: 100% - $gridMarginSmall !important; // at medium size, all centered blocks should be full width
+	}
+}
+//----------------------------------------------------------//
+
+// GRID OVERLAY
+//----------------------------------------------------------//
+#grid-overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	z-index: 9999;
+	display: none; // off by default;
+	-webkit-transition: 400ms all;
+	pointer-events: none;
+
+	.container {
+		height: 100%;
+		background-color: RGBA(10,10,10,.05);
+
+		.row {
+			height: 100%;
+
+			.col {
+				height: 100%;
+				background-color: rgba(202, 31, 123, .2);
+			}
+		}
+	}
+}
+#grid-overlay.active {
+	display: block;
+}
