@@ -1,24 +1,19 @@
 define([
-    'text!/assets/templates/contentExample.html'
+	"BaseContainer",
+	'text!/assets/templates/contentExample.html'
 ], function(
-    loadedTemplate
+	BaseContainer,
+	loadedTemplate
 ) {
 	var templateID = window.App.injectTemplate(loadedTemplate);
 
 	// add Private Variables here:
 	
-    return Ember.View.extend({
+    return BaseContainer.extend({
     	
-    	// https://gist.github.com/stefanpenner/5627411
-    	// may need to revisit this:
-    	container: App.__container__,
-
     	// Configure your view with these variables that will be
     	// injected into the template and can be autoupdated on change
-    	controller : Ember.Object.create({
-    		title		: 'A massive h1 title', 
-    		subtitle 	: 'Some Subtitile'
-    	}),
+    	controller : Ember.Object.create(),
 
     	// Default tag is div = <DIV>
     	//tagName: 'li',
@@ -76,17 +71,19 @@ define([
 			// dragEnd
     	}),
 
-    	init: function() {
-    		this._super();
-    	},
+    	subviews : [],
 
-    	didInsertElement : function() {
-    		
-    	},
+    	// init: function() {
+    	// 	this._super();
+    	// },
 
-    	willInsertElement : function(){
+    	// didInsertElement : function() {
+    	// 	this._super();
+    	// },
+
+    	// willInsertElement : function(){
     		
-    	},
+    	// },
 
     	// Demonstration of how to bind from events:
     	someFurtherFunction : function () {

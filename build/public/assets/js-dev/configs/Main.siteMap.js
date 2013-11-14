@@ -9,18 +9,35 @@ define([], function() {
         name: 'Home page',
   			view: 'pages/index',
   			status: 'complete',
+        config: {
+          title   : 'A massive h1 title', 
+          subtitle  : 'Some Subtitile'
+        },
         subviews: [
           {
-            view: '_modules/nav',
-            appendTo: '#nav-block'
+            view: '_modules/UI.nav',
+            appendTo: 'this #nav-block',
+            width: '100%',
+            config: {
+              links : [
+                {
+                  link: 'home'
+                },{
+                  link: 'editorial'
+                },{
+                  link: 'about'
+                },{
+                  link: 'contact'
+                }
+              ]
+            }
           },
           {
-            view: '_modules/footer',
-            appendTo: '#footer-block'
+            view: '_modules/UI.footer',
+            appendTo: '#footer-composite'
           }
         ]
-  		},
-  		{
+  		},{
         path:'/directory',
         name: 'Site Directory',
   			view: 'pages/directory',
