@@ -7,18 +7,18 @@ define([], function() {
   		{
   			path:'/',
         name: 'Home page',
-  			view: 'pages/index',
-  			status: 'complete',
-        config: {
+  			_Controller: 'pages/index',
+        _Template: 'contentExample.html',
+  			_Model: {
           title   : 'A massive h1 title', 
           subtitle  : 'Some Subtitile'
         },
+
         subviews: [
           {
-            view: '_modules/UI.nav',
-            appendTo: 'this #nav-block',
-            width: '100%',
-            config: {
+            _Controller: '_modules/UI.nav',
+            _Template: 'UI.nav.html',
+            _Model: {
               links : [
                 {
                   link: 'home'
@@ -30,22 +30,30 @@ define([], function() {
                   link: 'contact'
                 }
               ]
-            }
+            },
+            appendTo: 'parent #nav-block',
+            width: '100%'
           },
           {
-            view: '_modules/UI.footer',
+            _Controller: '_modules/UI.footer',
+            _Template: 'UI.footer.html',
+            _Model: 'configs/Model.test',
             appendTo: '#footer-composite'
           }
         ]
   		},{
         path:'/directory',
         name: 'Site Directory',
-  			view: 'pages/directory',
+  			_Controller: 'pages/directory',
+        _Template:'',
+        _Model : {},
   			status: 'in review'
   		},{
         path: '/404',
         name: 'Error Page',
-        view: 'pages/error'
+        _Controller: 'pages/error',
+        _Template:'',
+        _Model : {},
       }
     ];
 

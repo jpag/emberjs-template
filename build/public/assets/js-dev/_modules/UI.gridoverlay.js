@@ -1,11 +1,11 @@
 require([
     'jQuery',
     'Handlebars',
-    'Ember'
+    'text!/assets/templates/UI.gridoverlay.html'
 ], function(
     $,
     Handlebars,
-    Ember
+    Template
 ) {
 
     Debug.trace('GridOverlay loaded!')

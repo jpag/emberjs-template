@@ -15,9 +15,7 @@ requirejs.config({
         jScroll         : '_lib/jquery.mousewheel.min',
         jEase           : '_lib/jquery.easing.1.3.min',
         Handlebars      : '_lib/handlebars-1.0.0',
-        Ember           : '_lib/ember-1.1.2',
         text            : '_lib/text',
-        BaseContainer   : 'views/_BaseContainer',
         BaseView        : 'views/_BaseView'
     },
     priority: ['jQuery'],
@@ -34,16 +32,8 @@ requirejs.config({
             deps    :["jQuery"],
             exports : "Handlebars"
         },
-        "Ember" : {
-            deps    : ["jQuery", "Handlebars" ],
-            exports : 'Ember'
-        },
-        "BaseContainer" : {
-            deps    : ["jQuery", "Handlebars" , "Ember"],
-            exports : "BaseContainer"
-        },
         "BaseView" : {
-            deps    : ["jQuery", "Handlebars" , "Ember"],
+            deps    : ["jQuery", "Handlebars"],
             exports : "BaseView"
         }
     }
@@ -55,7 +45,6 @@ requirejs.config({
 require([
     'jQuery',
     'Handlebars',
-    'Ember',
     'configs/Main.siteMap',
     '_modules/debugger',
     '_modules/Global.setup',
@@ -67,11 +56,10 @@ require([
 ], function(
     $,
     Handlebars,
-    Ember,
     siteMap
 ) {
     
-    window.App = Ember.Application.create();
+    window.App = window.App || {};
     
     // Determine what page or view to load here:
     App.init = function() {
@@ -104,34 +92,30 @@ require([
      * ----- Load Page View ----
      *
      */
-    // load a specified view 'vw' is the path 
-    // relative to the js script folder.
+    // load a specified view and template
     App.loadView = function(vw,callBack) {
         require([
-                    vw.view
+                    vw._Controller
                 ], function( 
                     View
                 ){
 
                     if( typeof vw.subviews === 'undefined' ){
-                        Debug.trace(vw.view + ' view no subviews Defined ')
+                        // Debug.trace(vw.view + ' view no subviews Defined ')
                         vw.subviews = [];
                     }
+                    
                     if( typeof vw.appendTo === 'undefined' ){
-                        Debug.trace(vw.view + ' view no appendTo Defined ')
+                        // Debug.trace(vw.view + ' view no appendTo Defined ')
                         vw.appendTo = '#site-composite';
                     }
-                    if( typeof vw.config === 'undefined' ){
-                        vw.config = Ember.Object.create();
-                    }else{
-                        vw.config = Ember.Object.create(vw.config);
+
+                    if( typeof vw._Model === 'undefined' ){
+                        vw._Model = {};
                     }
 
-                    var view = View.create({
-                                            subviews: vw.subviews,
-                                            controller: vw.config
-                                            }).appendTo(vw.appendTo);    
-
+                    var view = new View(vw);
+                        
                     if( typeof callBack !== 'undefined' ){
                         callBack();
                     }
@@ -139,33 +123,11 @@ require([
                 });
     };  
 
-    // Inject a new template into the Ember app
-    App.injectTemplate = function(html) {
-        var templateID = 'loaded-template-'+(new Date()).getTime()+'-'+Math.round(Math.random()*999);   
-        
-        /*
-        var template = $('<script/>', {
-                                        'data-template-name' : templateID,
-                                        type : 'text/x-handlebars'
-                                        })
-                                        .html(html)
-                                        .appendTo("body");
-        */
+    App.renderTemplate = function(template, config){
 
-        // force update of Ember Handlebars
-        // Ember.Handlebars.bootstrap();
-        
-        // alternatively could just manually inject into Ember.TEMPLATES[];
-        if (Ember.TEMPLATES[templateID] !== undefined) {
-            Debug.trace(' Template '+templateID+' already exists');
-        } else {
-            // Debug.trace(' Template does not exist yet');
-            // inject into the Ember template list.
-             Ember.TEMPLATES[templateID] = Ember.Handlebars.compile(html);    
-        }
-
-        return templateID;
-    };
+        return tmpl;
+    }
+    
 
     /*
      *
