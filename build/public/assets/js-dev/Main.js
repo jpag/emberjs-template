@@ -53,6 +53,10 @@ require([
     '_modules/debugger',
     '_modules/Global.setup',
     '_modules/UI.gridoverlay',
+    // If you want to add default features that run 
+    // by themselves everywhere you can plop there here
+    // i.e. a nav. or footer.
+    
     'jScroll',
     'jEase',
     'text' 

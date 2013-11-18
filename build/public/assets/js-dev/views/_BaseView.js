@@ -85,12 +85,11 @@ define([], function() {
                 Model
             ){
 
-                // Debug.trace( ' - loaded - ' + view.name + ' Model ' );
-                // Debug.trace( Model );
-
                 if( typeof Model === 'undefined' ){
                     Model = view.settings._Model;
                 }
+                Debug.trace( ' - LOADED - ' + view.name + ' MODEL : ' );
+                Debug.trace( Model );
 
                 var handlebar = Handlebars.compile(Template);
                 view.$el = $( handlebar(Model) );

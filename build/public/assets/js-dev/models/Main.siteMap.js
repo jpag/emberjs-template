@@ -45,9 +45,8 @@ define([], function() {
         path:'/directory',
         name: 'Site Directory',
   			_Controller: 'views/directory',
-        _Template:'',
-        _Model : {},
-  			status: 'in review'
+        _Template:'siteDirectory.html',
+        _Model : {}
   		},{
         path: '/404',
         name: 'Error Page',
