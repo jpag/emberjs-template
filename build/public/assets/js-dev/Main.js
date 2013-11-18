@@ -52,11 +52,16 @@ require([
     'models/Main.siteMap',
     '_modules/debugger',
     '_modules/Global.setup',
+    /*
+     * this is a view that just runs by itself not connected 
+     * in any way to the rest of the site
+     */
     '_modules/UI.gridoverlay',
-    // If you want to add default features that run 
-    // by themselves everywhere you can plop there here
-    // i.e. a nav. or footer.
-    
+    /* If you want to add default features that run 
+     * by themselves everywhere you can plop there here
+     * i.e. a nav. or footer.
+     */
+
     'jScroll',
     'jEase',
     'text' 
@@ -102,27 +107,10 @@ require([
                 ], function( 
                     View
                 ){
-
-                    if( typeof vw.subviews === 'undefined' ){
-                        // Debug.trace(vw.view + ' view no subviews Defined ')
-                        vw.subviews = [];
-                    }
-                    
-                    if( typeof vw.appendTo === 'undefined' ){
-                        // Debug.trace(vw.view + ' view no appendTo Defined ')
-                        vw.appendTo = '#site-composite';
-                    }
-
-                    if( typeof vw._Model === 'undefined' ){
-                        vw._Model = {};
-                    }
-
                     var view = new View(vw);
-                        
                     if( typeof callBack !== 'undefined' ){
                         callBack();
                     }
-
                 });
     };  
 
@@ -133,7 +121,7 @@ require([
     App.loadComplete = function() {
         Debug.trace(' APP LOAD COMPLETE');
         $("#siteloader")
-                .delay(100)
+                .delay(50)
                 .animate({
                     "top": "25px"
                 })
@@ -141,9 +129,8 @@ require([
                     "opacity":0,
                     'top':'-100px'
                 }, {
-                    duration: 300,
+                    duration: 200,
                     complete: App.revealAll
-                    // easing:'easeInBounce'
                 });
     };
 

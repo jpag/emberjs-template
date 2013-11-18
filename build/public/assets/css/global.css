@@ -799,22 +799,51 @@ ul, li {
 
 /* 
   ---------------------
-  IMPORT VIEWS and SEP .LESS files here: 
+  IMPORT VIEWS and SEP .SCSS files here: 
   ---------------------
 */
-.downloadApp {
-  background-image: url("../images/icons/Download_on_the_App_Store_Badge_US-UK_135x40.png");
-  background-image: url("../images/icons/Download_on_the_App_Store_Badge_US-UK_135x40.svg");
-  width: 135px;
-  height: 40px;
-  background-repeat: no-repeat;
-  overflow: none;
-  cursor: pointer;
+#directory-page {
+  min-width: 767px;
+}
+#directory-page .col {
+  padding: 10px 0px;
+}
+#directory-page .row {
+  border-bottom: 1px solid RGBA(0, 0, 0, 0.1);
+  border-left: 1px solid RGBA(0, 0, 0, 0.1);
+  border-right: 1px solid RGBA(0, 0, 0, 0.1);
   display: block;
 }
-
-.ie .downloadApp {
-  background-image: url("../images/icons/Download_on_the_App_Store_Badge_US-UK_135x40.png");
+#directory-page a.row {
+  -webkit-transition: background 200ms cubic-bezier(0.385, 0.205, 0.235, 0.835);
+  -moz-transition: background 200ms cubic-bezier(0.385, 0.205, 0.235, 0.835);
+  -ms-transition: background 200ms cubic-bezier(0.385, 0.205, 0.235, 0.835);
+  -o-transition: background 200ms cubic-bezier(0.385, 0.205, 0.235, 0.835);
+  transition: background 200ms cubic-bezier(0.385, 0.205, 0.235, 0.835);
+  background: RGBA(255, 255, 255, 0.45);
+}
+#directory-page a.row:hover {
+  background: RGBA(100, 100, 100, 0.01);
+}
+#directory-page #directory-header {
+  background: RGBA(0, 0, 0, 0.1);
+  text-transform: uppercase;
+  font-family: "FoundersGrotCond-Semibold";
+  font-size: 20px;
+  color: #888888;
+  text-transform: uppercase;
+  text-align: left;
+}
+#directory-page .directory-title {
+  font-family: "FoundersGrotCond-Semibold";
+  font-size: 18px;
+  color: #aaaaaa;
+  text-transform: uppercase;
+}
+#directory-page .directory-status,
+#directory-page .directory-description {
+  color: #bbb;
+  font-size: 14px;
 }
 
 #siteloader-wrapper {

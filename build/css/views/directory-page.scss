@@ -1,0 +1,43 @@
+#directory-page {
+	$color: RGBA(0,0,0,.1);
+
+	min-width: $smallBreak;
+	
+	.col {
+		padding: 10px 0px;
+		// border-right: 1px solid $color;
+	}
+	.row {
+		border-bottom: 1px solid $color;
+		border-left: 1px solid $color;
+		border-right: 1px solid $color;
+		display: block;
+	}
+
+	a.row {
+		@include animate-default(background, 200ms );
+
+		background: RGBA(255,255,255,.45);
+	}
+
+	a.row:hover {
+		background: RGBA(100,100,100,.01);
+	}
+
+	#directory-header {
+		background: $color;
+		text-transform: uppercase;
+		@include founders( 20px, #888);
+		text-align: left;
+	}
+
+	.directory-title {
+		@include founders( 18px, #aaa);
+	}
+
+	.directory-status,
+	.directory-description {
+		color: #bbb;
+		font-size: 14px;
+	}
+}

@@ -55,7 +55,23 @@ define([], function() {
 
     	init : function(_config) {
             Debug.trace( this.name + ' INITIALIZED ----- ');
+
+            // Make sure we have all the things we might need:
+            // asign defaults if they do not exist
+            if( typeof _config.subviews === 'undefined' ){
+                // Debug.trace(vw.view + ' view no subviews Defined ')
+                _config.subviews = [];
+            }
             
+            if( typeof _config.appendTo === 'undefined' ){
+                // Debug.trace(vw.view + ' view no appendTo Defined ')
+                _config.appendTo = '#site-composite';
+            }
+
+            if( typeof _config._Model === 'undefined' ){
+                _config._Model = {};
+            }
+
             this.settings = _config;
             this.renderTemplate();
     	},

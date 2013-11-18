@@ -5,7 +5,7 @@ define([
 ) {
 
     return BaseView.extend({
-        name :'uifooter view'
+        name :'uifooter view',
         eventManager: {
         	
         }

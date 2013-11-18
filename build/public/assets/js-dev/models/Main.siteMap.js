@@ -1,3 +1,6 @@
+
+// you can create an entire site just by using this page
+
 define([], function() {
   //  The default page to use from 'config' array number
   //  array starts with 0.
@@ -7,13 +10,14 @@ define([], function() {
   		{
   			path:'/',
         name: 'Home page',
+        status: 'In Production',
+        description: 'Index page of the site demo',
   			_Controller: 'views/index',
         _Template: 'contentExample.html',
   			_Model: {
           title   : 'A massive h1 title', 
           subtitle  : 'Some Subtitile'
         },
-
         subviews: [
           {
             _Controller: '_modules/UI.nav',
@@ -45,11 +49,13 @@ define([], function() {
         path:'/directory',
         name: 'Site Directory',
   			_Controller: 'views/directory',
-        _Template:'siteDirectory.html',
+        _Template:'directory.html',
         _Model : {}
   		},{
         path: '/404',
         name: 'Error Page',
+        status: 'Pending Design',
+        description: 'Example of a 404 error page.',
         _Controller: 'views/error',
         _Template:'',
         _Model : {},

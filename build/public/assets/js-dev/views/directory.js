@@ -1,3 +1,8 @@
+/*
+ * this view takes everything from the Main.siteMap
+ * and generates an index page from them.
+ */
+  
 define([
     "BaseView",
     'models/Main.siteMap'
@@ -7,16 +12,24 @@ define([
 ) {
 
     return BaseView.extend({
-    	name: 'site directory',
+    	name: 'Site Directory',
 
     	init: function(_config){
-    		Debug.trace(' site directory - INIT - ');
     		// listings
-    		var filteredList = siteMap.directory;
-    			
+    		var filteredList = [];
+    		for(var a = 0; a < siteMap.directory.length; a++ ){
+    			if( siteMap.directory[a].name.toLowerCase() == 'site directory' || 
+    				siteMap.directory[a]._Controller == 'views/directory' ){
+    				// skip
+
+    			}else {
+    				filteredList.push( siteMap.directory[a] );
+    			}
+    		}
+
     		_config._Model = {listings: filteredList };
-    		Debug.trace( _config );
     		this._super(_config);
     	}
+
     });
  });

@@ -1,0 +1,40 @@
+<div class="full-box" id="directory-page" >
+	<div class="container" id="directory-header">
+		<div class="row">
+	        	<div class="col span-3">
+	        		Name
+	        	</div>
+	        	<div class="col span-3">
+	        		Path
+	        	</div>
+	        	<div class="col span-3">
+	        		Description
+	        	</div>
+	        	<div class="col span-3">
+	        		Status
+	        	</div>
+
+	        </div>	
+	</div>
+
+    <div class="container">
+    	{{#each listings}}
+	        <a href="{{path}}" class="row">
+	        	<div class="col span-3 directory-title">
+	        		{{name}}
+	        	</div>
+	        	<div class="col span-3">
+	        		{{path}}
+	        	</div>
+	        	<div class="col span-3 directory-description">
+	        		{{description}}
+	        	</div>
+	        	
+	        	<div class="col span-3 directory-status">
+	        		{{status}}
+	        	</div>
+	        	
+	        </a>	
+	      {{/each}}
+	</div>
+</div>
