@@ -1,5 +1,5 @@
-emberjs-template
-================
+Front-End Rapid deply prototype template
+========================================
 
 Template with SASS, and Handlebars, using jQuery and Require for usage in in rapid prototyping builds.
 
