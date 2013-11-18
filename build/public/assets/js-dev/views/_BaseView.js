@@ -1,14 +1,15 @@
 define([], function() {
-	// add Private Variables here:
 	
     return window.Class.extend({
     	
         settings    : {},
         name        : 'baseView',
 
-    	// Event manager for this view 
-        // keeps in scope of this view only 
-        // so nothing else will respond to 'event'
+    	/*
+         * Event manager for this view 
+         * keeps in scope of this view only 
+         * so nothing else will respond to 'event'
+         */
         eventManager: {
             
             // click : function(event){ do something },
@@ -60,19 +61,33 @@ define([], function() {
     	},
 
         renderTemplate : function() {
-            // Debug.trace(' - Loading template ' );
+            // Debug.trace(' - Loading template Model ' + this.settings._Model ); 
 
-            var view = this;
-            
-            require([
-                'text!/assets/templates/'+this.settings._Template,
-                this.settings._Model
-            ],function(
+            var view = this,
+                requireArray = [
+                                'text!/assets/templates/'+this.settings._Template
+                                ];
+
+            /*
+             * Do we need to load a model as well?
+             * The model will hold all the variables that are to be displayed in the html template
+             * _Model can be either a string (path to a config file)
+             * or can be an object without the need to load anything else.                                 
+             */
+            if( typeof this.settings._Model == 'string' ){
+                requireArray.push(this.settings._Model);
+            };
+
+            require( 
+                requireArray,
+            function(
                 Template,
                 Model
             ){
 
-                Debug.trace( ' - loaded - ' + view.name);
+                // Debug.trace( ' - loaded - ' + view.name + ' Model ' );
+                // Debug.trace( Model );
+
                 if( typeof Model === 'undefined' ){
                     Model = view.settings._Model;
                 }
@@ -86,7 +101,7 @@ define([], function() {
 
                 if( appendTo.indexOf( parent ) == 0 ){
                     // attach to the parent:
-                    Debug.trace(' - '+ view.name + ' Attaching to the parent view');
+                    // Debug.trace(' - '+ view.name + ' Attaching to the parent view');
                     var find = appendTo.substr( parent.length  );
                     appendTo = view.settings.parent.find( find );
                 }
@@ -99,8 +114,8 @@ define([], function() {
         },
 
     	didInsertElement : function() {
-            //check for other views to inject
-            Debug.trace( ' Loaded and Inserted - ' + this.name );
+            // check for other views to inject
+            // Debug.trace( ' Loaded and Inserted - ' + this.name );
             
             // now check for subviews:
             var subviews = this.settings.subviews;
@@ -111,9 +126,26 @@ define([], function() {
             }
 
             // ADD BIND EVENTS HERE:
-    	}
+            this.bindEvents();
+    	},
+
+        bindEvents : function() {
+            Debug.trace( ' BIND EVENTS: ' );
+            Debug.trace( this.eventManager );
+
+            // bind all the functions to 'this' the view.
+            var bindedEvents = {}; 
+            for (var key in this.eventManager) {
+                Debug.trace( key );
+                var func = this.eventManager[key];
+                bindedEvents[key] = $.proxy( this.eventManager[key] , this );
+            }
+            
+            // is there a way to bind specific elements within the view:
+
+            this.$el.on( bindedEvents );
+        }
 
     });
 
 });
-

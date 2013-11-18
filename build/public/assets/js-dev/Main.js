@@ -1,14 +1,16 @@
 /*
-	CONFIG settings for REQUIRE JS
-	PATHS etc refs to all libs.
-*/
+ * CONFIG settings for REQUIRE JS
+ * PATHS etc refs to all libs.
+ */
+
 requirejs.config({
     baseUrl: '/assets/js-dev/',
 
-    // Define aliases for the paths used.
-    //
-    // If you edit this section, make sure the analog edit goes into
-    // build.js as well. These need to stay in sync.
+    /*
+     * Define aliases for the paths used.
+     * If you edit this section, make sure the analog edit goes into
+     * build.js as well. These need to stay in sync.
+     */
 
     paths: {
         jQuery          : '_wrappers/jquery.wrapper',
@@ -39,8 +41,10 @@ requirejs.config({
     }
 });
 
-
-// ----- Let us start up the APP -----
+/* -----------------------------------
+ * ----- Let us start up the APP -----
+ * -----------------------------------
+ */
 
 require([
     'jQuery',
@@ -48,7 +52,6 @@ require([
     'configs/Main.siteMap',
     '_modules/debugger',
     '_modules/Global.setup',
-    // need to set this up to run automatically.
     '_modules/UI.gridoverlay',
     'jScroll',
     'jEase',
@@ -63,16 +66,14 @@ require([
     
     // Determine what page or view to load here:
     App.init = function() {
-        Debug.trace( ' ----- INITIALIZE ----' );
-       
+        Debug.trace( ' ----- INITIALIZE APP ----' );
         // Determine the path and what view to load:
-        
         var view = null,
             Address = window.location.pathname;
 
         for( var s = 0; s < siteMap.directory.length; s++ ){
             if( Address == siteMap.directory[s].path ) {
-                Debug.trace(" found match " + siteMap.directory[s].view );
+                Debug.trace("  - page match " + siteMap.directory[s].view );
                 view = siteMap.directory[s];
             }
         }
@@ -88,11 +89,9 @@ require([
     };
 
     /*
-     *
      * ----- Load Page View ----
-     *
+     * load a specified view and template
      */
-    // load a specified view and template
     App.loadView = function(vw,callBack) {
         require([
                     vw._Controller
@@ -123,19 +122,12 @@ require([
                 });
     };  
 
-    App.renderTemplate = function(template, config){
-
-        return tmpl;
-    }
-    
-
     /*
-     *
-     * ------- Reval ------
-     *
+     * ------- Reveal ------
+     * animate out the loader and fade out
     */
-    // animate out the loader and fade out
     App.loadComplete = function() {
+        Debug.trace(' APP LOAD COMPLETE');
         $("#siteloader")
                 .delay(100)
                 .animate({
@@ -147,7 +139,7 @@ require([
                 }, {
                     duration: 300,
                     complete: App.revealAll
-                    //easing:'easeInBounce'
+                    // easing:'easeInBounce'
                 });
     };
 
@@ -157,13 +149,7 @@ require([
         $("#siteloader-wrapper").remove();
     };
 
-
     App.init();
 
 });
-
-
-
-
-
 

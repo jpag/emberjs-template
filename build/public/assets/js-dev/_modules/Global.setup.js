@@ -65,6 +65,11 @@ require([
         window.GA._gaq.push(['_trackPageview', page ]);
     }
 
+    
+    // -----------------------------------------------------------------
+    // ----- Means of creating classes that can can extend on one another
+    // -----------------------------------------------------------------
+
     // http://ejohn.org/blog/simple-javascript-inheritance/
     /* Simple JavaScript Inheritance
      * By John Resig http://ejohn.org/

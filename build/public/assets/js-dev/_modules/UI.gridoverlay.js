@@ -8,6 +8,24 @@ require([
     Template
 ) {
 
-    Debug.trace('GridOverlay loaded!')
+	// example of a view working independently of anything else,
+	// just dump your code in here:
+
+	var handlebar = Handlebars.compile(Template),
+		view = $( handlebar() );
+
+	$('body').append(view)
+
+	$('body').on({
+		"keyup": keyup
+	})
+    
+    function keyup(ev) {
+    	Debug.trace(' ev - KEYUP ' );
+    	Debug.trace( ev.keyCode );
+    	if( ev.keyCode == 71 ){
+    		view.toggleClass('active');
+    	}
+    }
 
 });

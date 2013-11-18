@@ -37,7 +37,7 @@ define([], function() {
           {
             _Controller: '_modules/UI.footer',
             _Template: 'UI.footer.html',
-            _Model: 'configs/Model.test',
+            _Model: 'configs/Model.footer',
             appendTo: '#footer-composite'
           }
         ]

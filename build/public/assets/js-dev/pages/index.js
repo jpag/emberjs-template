@@ -8,38 +8,22 @@ define([
         name :'indexView',
 
         eventManager : {
-            click : function(){
-                Debug.trace(' something serious here');
-            }
+            // 'click' : function(e){
+            //     Debug.trace(' click something serious here');
+            // },
+
+            'click' : function(ev){ 
+                        this.mouseEnter(ev);
+                    }
         },
 
         init : function(_config){
-            Debug.trace(' INDEX VIEW init - ');
             this._super(_config);
+        },
+
+        mouseEnter: function(ev) {
+            Debug.trace(' ------ mouse enter ----- ');
         }
+
     });
 });
-
-/*
-    	// init: function() {
-    	// 	this._super();
-    	// },
-
-    	// didInsertElement : function() {
-    	// 	this._super();
-    	// },
-
-    	// willInsertElement : function(){
-    		
-    	// },
-
-    	// Demonstration of how to bind from events:
-    	someFurtherFunction : function () {
-    		Debug.trace(' execute more work here if you want THIS:');
-    	}
-
-        init(configurations);
-    };
-
-});
-*/
