@@ -49,7 +49,7 @@ requirejs.config({
 require([
     'jQuery',
     'Handlebars',
-    'configs/Main.siteMap',
+    'models/Main.siteMap',
     '_modules/debugger',
     '_modules/Global.setup',
     '_modules/UI.gridoverlay',

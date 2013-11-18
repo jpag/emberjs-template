@@ -1,27 +1,31 @@
 define([
-	"BaseView"
+    "BaseView"
 ], function(
-	BaseView
+    BaseView
 ) {
 
     return BaseView.extend({
-        name :'indexView',
+        // name :'name of view [optional]',
 
         eventManager : {
-            // 'click' : function(e){
-            //     Debug.trace(' click something serious here');
-            // },
-
             'click' : function(ev){ 
-                        this.mouseEnter(ev);
+                        this.clickEvent(ev);
                     }
         },
 
+        /*
         init : function(_config){
             this._super(_config);
         },
+        */
+        
+        /*
+        didInsertElement : function(){
+            this._super();
+        }
+        */
 
-        mouseEnter: function(ev) {
+        clickEvent: function(ev) {
             Debug.trace(' ------ mouse enter ----- ');
         }
 
