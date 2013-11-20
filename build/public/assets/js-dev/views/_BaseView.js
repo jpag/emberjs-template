@@ -121,7 +121,6 @@ define([], function() {
                     appendTo = view.settings.parent.find( find );
                 }
 
-                $( view.settings.parent ).addClass("selected");
                 $( appendTo ).append( view.$el );
 
                 view.didInsertElement();
