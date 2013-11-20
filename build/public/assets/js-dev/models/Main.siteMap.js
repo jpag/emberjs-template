@@ -6,20 +6,9 @@ define([], function() {
   //  array starts with 0.
   var defaultPage = 2;
 
-  var config = [
-  		{
-  			path:'/',
-        name: 'Home page',
-        status: 'In Production',
-        description: 'Index page of the site demo',
-  			_Controller: 'views/index',
-        _Template: 'contentExample.html',
-  			_Model: {
-          title   : 'A massive h1 title', 
-          subtitle  : 'Some Subtitile'
-        },
-        subviews: [
-          {
+  // if you have a re-occuring subview that doesn't auto intitate in main
+  // declare it here and save lines of code
+  var nav = {
             _Controller: '_modules/UI.nav',
             _Template: 'UI.nav.html',
             _Model: {
@@ -37,13 +26,30 @@ define([], function() {
             },
             appendTo: 'parent #nav-block',
             width: '100%'
-          },
-          {
-            _Controller: '_modules/UI.footer',
-            _Template: 'UI.footer.html',
-            _Model: 'models/Model.footer',
-            appendTo: '#footer-composite'
-          }
+          };
+
+  var footer = {
+                _Controller: '_modules/UI.footer',
+                _Template: 'UI.footer.html',
+                _Model: 'models/Model.footer',
+                appendTo: '#footer-composite'
+                };
+
+  var config = [
+  		{
+  			path:'/',
+        name: 'Home page',
+        status: 'In Production',
+        description: 'Index page of the site demo',
+  			_Controller: 'views/index',
+        _Template: 'contentExample.html',
+  			_Model: {
+          title   : 'A massive h1 title', 
+          subtitle  : 'Some Subtitile'
+        },
+        subviews: [
+          nav,
+          footer
         ]
   		},{
         path:'/directory',
