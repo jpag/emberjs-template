@@ -4,7 +4,7 @@
 define([], function() {
   //  The default page to use from 'config' array number
   //  array starts with 0.
-  var defaultPage = 2;
+  var defaultPage = 0;
 
   // if you have a re-occuring subview that doesn't auto intitate in main
   // declare it here and save lines of code
@@ -24,7 +24,7 @@ define([], function() {
                 }
               ]
             },
-            appendTo: 'parent #nav-block',
+            prependTo: 'body',
             width: '100%'
           };
 
@@ -37,7 +37,13 @@ define([], function() {
 
   var config = [
   		{
-  			path:'/',
+        path:'/directory',
+        name: 'Site Directory',
+        _Controller: 'views/directory',
+        _Template:'directory.html',
+        _Model : {}
+      },{
+  			path:'/homepage',
         name: 'Home page',
         status: 'In Production',
         description: 'Index page of the site demo',
@@ -51,12 +57,6 @@ define([], function() {
           nav,
           footer
         ]
-  		},{
-        path:'/directory',
-        name: 'Site Directory',
-  			_Controller: 'views/directory',
-        _Template:'directory.html',
-        _Model : {}
   		},{
         path: '/404',
         name: 'Error Page',

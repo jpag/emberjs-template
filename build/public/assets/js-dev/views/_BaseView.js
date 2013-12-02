@@ -1,11 +1,11 @@
 define([], function() {
-	
+    
     return window.Class.extend({
-    	
+        
         settings    : {},
         name        : 'baseView',
 
-    	/*
+        /*
          * Event manager for this view 
          * keeps in scope of this view only 
          * so nothing else will respond to 'event'
@@ -53,7 +53,7 @@ define([], function() {
             // dragEnd
         },
 
-    	init : function(_config) {
+        init : function(_config) {
             Debug.trace( this.name + ' INITIALIZED ----- ');
 
             // Make sure we have all the things we might need:
@@ -63,7 +63,8 @@ define([], function() {
                 _config.subviews = [];
             }
             
-            if( typeof _config.appendTo === 'undefined' ){
+            if( typeof _config.appendTo === 'undefined' &&
+                typeof _config.prependTo === 'undefined' ){
                 // Debug.trace(vw.view + ' view no appendTo Defined ')
                 _config.appendTo = '#site-composite';
             }
@@ -74,7 +75,7 @@ define([], function() {
 
             this.settings = _config;
             this.renderTemplate();
-    	},
+        },
 
         renderTemplate : function() {
             // Debug.trace(' - Loading template Model ' + this.settings._Model ); 
@@ -110,24 +111,37 @@ define([], function() {
                 var handlebar = Handlebars.compile(Template);
                 view.$el = $( handlebar(Model) );
 
-                // should we wrap all views in a div like other frameworks?
-                var appendTo = view.settings.appendTo,
-                    parent = 'parent ';
+                // Default is append, but you can prepend if defined
+                if( typeof view.settings.prependTo !== 'undefined' ){
+                    
+                    var prependTo = view._isItParent(view.settings.prependTo); 
+                    $( prependTo ).prepend( view.$el );
 
-                if( appendTo.indexOf( parent ) == 0 ){
-                    // attach to the parent:
-                    // Debug.trace(' - '+ view.name + ' Attaching to the parent view');
-                    var find = appendTo.substr( parent.length  );
-                    appendTo = view.settings.parent.find( find );
+                }else{
+                    // should we wrap all views in a div like other frameworks?
+                    var appendTo = view._isItParent(view.settings.appendTo); 
+                    $( appendTo ).append( view.$el );
                 }
-
-                $( appendTo ).append( view.$el );
 
                 view.didInsertElement();
             });
         },
 
-    	didInsertElement : function() {
+        // for finding the append and prepend element
+        _isItParent : function(addTo) {
+            var parent = 'parent ';
+
+            if( addTo.indexOf( parent ) == 0 ){
+                // attach to the parent:
+                // Debug.trace(' - '+ view.name + ' Attaching to the parent view');
+                var find = addTo.substr( parent.length  );
+                addTo = view.settings.parent.find( find );
+            }
+
+            return addTo;
+        },
+
+        didInsertElement : function() {
             // check for other views to inject
             // Debug.trace( ' Loaded and Inserted - ' + this.name );
             
@@ -141,7 +155,7 @@ define([], function() {
 
             // ADD BIND EVENTS HERE:
             this.bindEvents();
-    	},
+        },
 
         bindEvents : function() {
             Debug.trace( ' BIND EVENTS: ' );
