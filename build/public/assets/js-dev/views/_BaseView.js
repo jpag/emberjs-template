@@ -79,6 +79,11 @@ define([], function() {
 
         renderTemplate : function() {
             // Debug.trace(' - Loading template Model ' + this.settings._Model ); 
+            if( typeof this.settings._Template === 'undefined' ||
+                this.settings._Template.length < 1 ){
+                Debug.trace(' NO TEMPLATE DEFINED ABORT!');
+                return;
+            }
 
             var view = this,
                 requireArray = [
@@ -169,8 +174,9 @@ define([], function() {
                 bindedEvents[key] = $.proxy( this.eventManager[key] , this );
             }
             
-            // is there a way to bind specific elements within the view:
-
+            // need to setup a way to bind specific elements 
+            // within the view like backbone?
+            
             this.$el.on( bindedEvents );
         }
 

@@ -1,13 +1,7 @@
-require([
-    'jQuery',
-    'Handlebars',
-    'Ember'
-], function(
-    $,
-    Handlebars,
-    Ember
-) {
+define([], function() {
+	return function(){
 
-    Debug.trace('loaded!')
-
+    	Debug.trace(' ---- error --- blank function example');
+    	
+    }
 });

@@ -6,6 +6,12 @@ define([], function() {
   //  array starts with 0.
   var defaultPage = 0;
 
+  //if you are running this site in a subfolder 
+  // you are gonna need to define the sub folder here
+  // always have first slash not last slash:
+  // i.e. www.example.com/v2/prototypesite/ would looke like pathname = "/v2/prototypesite";
+  var pathname = "/v2/prototypesite";
+
   // if you have a re-occuring subview that doesn't auto intitate in main
   // declare it here and save lines of code
   var nav = {
@@ -68,5 +74,5 @@ define([], function() {
       }
     ];
 
-  return {directory:config, defaultPage:defaultPage};
+  return {directory:config, defaultPage:defaultPage, locationPath:pathname };
 });

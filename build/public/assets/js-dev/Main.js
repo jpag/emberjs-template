@@ -78,7 +78,7 @@ require([
         Debug.trace( ' ----- INITIALIZE APP ----' );
         // Determine the path and what view to load:
         var view = null,
-            Address = window.location.pathname;
+            Address = window.location.pathname.replace(siteMap.locationPath , "" );
 
         for( var s = 0; s < siteMap.directory.length; s++ ){
             if( Address == siteMap.directory[s].path ) {

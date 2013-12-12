@@ -4,7 +4,7 @@
  */
   
 define([
-    "BaseView",
+    'BaseView',
     'models/Main.siteMap'
 ], function(
     BaseView,
@@ -16,13 +16,24 @@ define([
 
     	init: function(_config){
     		// listings
-    		var filteredList = [];
+    		var filteredList = [],
+                sitePath = '';
+
+            if( window.location.pathname.indexOf(siteMap.locationPath ) == 0 ){
+                // really should ONLY equal 0
+                sitePath = siteMap.locationPath;
+            }
+
     		for(var a = 0; a < siteMap.directory.length; a++ ){
     			if( siteMap.directory[a].name.toLowerCase() == 'site directory' || 
     				siteMap.directory[a]._Controller == 'views/directory' ){
     				// skip
 
     			}else {
+                    // add this path so that urls point to the right 
+                    // path in a relative directory
+                    siteMap.directory[a].sitepath = sitePath;
+
     				filteredList.push( siteMap.directory[a] );
     			}
     		}
