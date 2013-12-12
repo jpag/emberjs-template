@@ -6,9 +6,15 @@ Template with SASS, and Handlebars, using jQuery and Require for usage in in rap
 This is not an optimized means of running super fast sites, but a way of easily configuring a site with some basic elements that can be pulled in quickly.
 
 1st you should look at the Main.siteMap.js file to look at how things are managed and dynaimcally rendered.
-	update the default page a user would visit, recommended is the directory page.
-	update the pathname depending on the URI path being used on your localhost or website. You can define pathname of a website running this in a folder like "/version2" but it will still run locally no problem as "localhost/"
+	
+* defaultPage
+	- update the default page a user would visit, recommended is the directory page.
 
+* pathname 
+	- update the pathname depending on the URI path being used on your localhost or website. You can define pathname of a website running this in a folder like "/version2" but it will still run locally no problem as "localhost/". 
+	- This is what allows things to work in relative directories.
+
+* config
 	- _Model defines a json file that should have all sort of copy and configuration settings you will use in your view
 	- _Controller defines the logic of what happens in your view (click events, resizing, scroll). Bind to elements from your template here and create all the events that will happen and actions.
 	- _Template defines the html and {{tags}} to let the model autopopulate it with content.
