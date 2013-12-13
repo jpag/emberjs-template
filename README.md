@@ -41,6 +41,8 @@ This is not an optimized means of running super fast sites, but a way of easily 
 	* warning loading .html extensions with firefox or ie could be a problem
 
 * TODO
+	- create unique css files per view and have them load in via JS.
+	- update build scripts
 	- build out more UI component examples (dropdown, autocomplete, etc.)
 	- update build optimizer script
 	- event dispatcher (a good way of triggering events and passing that on to multiple views)

@@ -1,4 +1,5 @@
 ({
+    
     appDir  : '../public/assets/js-dev',
     baseUrl : '.',
     dir     : '../public/assets/js',
@@ -8,22 +9,16 @@
     normalizeDirDefines : 'skip',
 
     paths: {
-        order       :'lib/order',
-        jQuery      :'wrapper/jquery.wrapper',
-        Underscore  : 'wrapper/underscore.wrapper',
-        backbone    :'wrapper/backbone.wrapper',
-        Handlebars  :
-        text        :'lib/text',
-        jScroll     :'lib/jquery.mousewheel.min',
-        jEase       :'lib/jquery.easing.1.3.min',
-
+        jQuery          : '_wrappers/jquery.wrapper',
+        jScroll         : '_lib/jquery.mousewheel.min',
+        jEase           : '_lib/jquery.easing.1.3.min',
+        Handlebars      : '_lib/handlebars-1.0.0',
+        text            : '_lib/text',
+        BaseView        : 'views/_BaseView'
     },
 
     shim: {
-        "Backbone": {
-            deps    : ["jQuery", "Underscore"],
-            exports : 'Backbone'
-        }
+
     },
 
     modules: [
