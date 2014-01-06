@@ -71,6 +71,7 @@ define([], function() {
         _Controller: 'views/error',
         _Template:'',
         _Model : {},
+        // _Style: "css.css"
       }
     ];
 

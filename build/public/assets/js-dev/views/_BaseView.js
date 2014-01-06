@@ -73,8 +73,26 @@ define([], function() {
                 _config._Model = {};
             }
 
+            if( typeof _config._Style !== 'undefined' ){
+                this.loadcss(_config._Style);
+            }
+
             this.settings = _config;
             this.renderTemplate();
+        },
+
+        loadcss : function(css) {
+            var cssPath = $("link[data-type='globalcss']").attr('href').replace("global.css",""),
+                linkNode = document.createElement('link'),
+                head = document.getElementsByTagName('head')[0];
+
+            Debug.trace(' css path ' + cssPath );
+
+            linkNode.setAttribute('rel', 'stylesheet');
+            linkNode.setAttribute('type', 'text/css');
+            linkNode.setAttribute('href', cssPath+css);
+
+            head.appendChild(linkNode);
         },
 
         renderTemplate : function() {
