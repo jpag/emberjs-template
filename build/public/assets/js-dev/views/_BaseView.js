@@ -127,7 +127,10 @@ define([], function() {
 
                 if( typeof Model === 'undefined' ){
                     Model = view.settings._Model;
+                }else{
+                    view.settings._Model = Model;
                 }
+
                 Debug.trace( ' - LOADED - ' + view.name + ' MODEL : ' );
                 Debug.trace( Model );
 

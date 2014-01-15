@@ -803,7 +803,10 @@ ul, li {
   ---------------------
 */
 #directory-page {
+  background-color: #f9f9f9;
   min-width: 767px;
+  padding-bottom: 100px;
+  padding-top: 50px;
 }
 #directory-page .col {
   padding: 10px 0px;
@@ -825,7 +828,8 @@ ul, li {
 #directory-page a.row:hover {
   background: RGBA(100, 100, 100, 0.01);
 }
-#directory-page #directory-header {
+#directory-page #directory-header .row {
+  border-top: 1px solid RGBA(0, 0, 0, 0.1);
   background: RGBA(0, 0, 0, 0.1);
   text-transform: uppercase;
   font-family: "FoundersGrotCond-Semibold";
